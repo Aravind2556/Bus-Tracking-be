@@ -8,9 +8,9 @@ const BusRouter = Express.Router()
 
 BusRouter.post('/Create-bus', async (req, res)=>{
     try{
-        const {busNo,startPoint,endPoint} = req.body
+        const {busNo,startPoint,endPoint,seatCapacity} = req.body
 
-        if(!busNo || !startPoint || !endPoint ){
+        if(!busNo || !startPoint || !endPoint || !seatCapacity ){
             return res.send({success: false, message: 'Please provide all details!'})
         }
         
@@ -25,7 +25,8 @@ BusRouter.post('/Create-bus', async (req, res)=>{
          
             busNo: busNo,
             startPoint: startPoint,
-            endPoint: endPoint
+            endPoint: endPoint,
+            totalSeat : seatCapacity
            
         })
 
