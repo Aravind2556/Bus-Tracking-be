@@ -51,6 +51,24 @@ BusRouter.post('/Create-bus', async (req, res)=>{
 })
 
 
+BusRouter.get('/fetch-bus',async (req,res)=>{
+    try{
+        const fetch_bus = await BusModel.find({})
+        if(fetch_bus){
+            return res.send({success : true , Bus : fetch_bus})
+        }
+        else{
+            return res.send({success :false , message : "Bus is not avalible"})
+        }
+
+    }
+    catch(err){
+        console.log("Error in Register:",err)
+        return res.send({success: false, message: 'Trouble in Registration! Please contact admin.'})
+    }
+
+})
+
 
 
 
